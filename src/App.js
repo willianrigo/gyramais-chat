@@ -10,6 +10,15 @@ import { Settings } from './components/settings/Settings'
 import { message } from 'antd'
 import { SideMenu } from './components/menu/SideMenu'
 
+
+import ApolloClient from 'apollo-boost';
+import { gql } from "apollo-boost";
+import { ApolloProvider } from '@apollo/react-hooks';
+
+const client = new ApolloClient({
+  uri: 'https://us-central1-graphql-test-f4474.cloudfunctions.net/graphql',
+});
+
 const { Header, Content, Footer, Sider } = Layout;
 
 class App extends React.Component {
@@ -35,10 +44,13 @@ class App extends React.Component {
 
   render() {
 
+    
     const users=[{name: 'John Wayne', id: '1'}, {name: 'John Marston', id: '2'}]
     const options=[{icon: "wechat", name: "Chat"}, {icon: "setting", name: "Configurações"}]
 
+
     return(
+      <ApolloProvider client={client} >
     <Layout
       style={{
         height: '100vh'
@@ -62,12 +74,12 @@ class App extends React.Component {
 
       <Layout style={{display: 'flex', flexDirection: 'column'}}>
 
-        {this.state.logged ? <MessagesField /> : <Settings />}
+        {!this.state.logged ? <MessagesField /> : <Settings />}
         
         <MessageInput />
       </Layout>
     </Layout>
-
+</ApolloProvider>
     )
     
   }

@@ -4,23 +4,21 @@ import moment from 'moment';
 
 
 //Structure of a message
-const Message = ({avatarId}) => {
+const Message = ({avatarId, author, data, timestamp}) => {
 
 return( 
     <Comment
         style={{padding: 10}}
-        author={<a>Han Solo</a>}
+        author={<a>{author}</a>}
         avatar={
         <Avatar
         src={`https://api.adorable.io/avatars/108/${avatarId}.png`} 
-            alt="Han Solo"
+            alt={author}
         />
         }
         content={
         <p style={{textAlign: 'left'}}>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure), to help people create their product prototypes beautifully
-            and efficiently.
+            {data}
         </p>
         }
         datetime={
