@@ -1,9 +1,9 @@
 import React from 'react';
 // import './../../stylesheets/_antd.css';
-import { Menu } from 'antd';
+import { Menu, Icon } from 'antd';
 
 
-const OptionsList = ({children}) => {
+const OptionsList = ({options, children}) => {
     return(
       <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}
         style={{
@@ -11,6 +11,14 @@ const OptionsList = ({children}) => {
           height: '100%'
         }}
       >
+          {options.map((option, index) => {
+            return(
+              <Menu.Item key={index}>
+                <Icon type={option.icon}/>
+                <span className="nav-text">{option.name}</span>
+              </Menu.Item>
+            )
+          })}
           {children}
       </Menu>
     )

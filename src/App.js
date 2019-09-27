@@ -2,16 +2,25 @@ import React, { Component } from 'react';
 import './stylesheets/_antd.css';
 import { Drawer } from './components/menu/Drawer'
 import { OptionsList } from './components/menu/OptionsList'
-import { Option } from './components/menu/Option'
-
-
+import { MessagesField } from './components/messages/MessagesField'
+import { MessageInput } from './components/messages/MessageInput'
+import { NamedAvatar } from './components/users/NamedAvatar'
 import { Layout, Menu, Icon, Button } from 'antd';
+import { Message } from './components/messages/Message'
+import { Settings } from './components/settings/Settings'
+import { message } from 'antd'
+
 
 const { Header, Content, Footer, Sider } = Layout;
 
 class App extends React.Component {
   state = {
     collapsed: false,
+    logged: false
+  };
+
+  success = () => {
+    message.info('John Wayne entrou no chat');
   };
 
   toggle = () => {
@@ -20,231 +29,67 @@ class App extends React.Component {
     });
   };
 
+  componentDidMount(){
+    this.success()
+    setTimeout(this.success(), 4000)
+    setTimeout(this.success(), 8000)
+
+  }
+
   render() {
-    return(<Drawer>
-
-      {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}
+    return(
+    <Layout
       style={{
-        overflowY: 'scroll',
-        height: '100%'
+        height: '100vh'
       }}
-      > */}
-      <OptionsList>
-        {/* <Option iconType="video-camera" name="opcao" key="1"/> */}
-        <Menu.Item key="1">
-          <Icon type="wechat"/>
-          <span className="nav-text">Chat</span>
-        </Menu.Item>
-
-        <Menu.Item key="2">
-          <Icon type="setting" />
-          <span className="nav-text">Configurações</span>
-        </Menu.Item>
-
-        <Menu.SubMenu>
-          <Icon type="setting" />
-          <span className="nav-text">Configurações</span>
+    >
+      <Drawer>
+      <OptionsList
+        options={[{icon: "wechat", name: "Chat"}, {icon: "setting", name: "Configurações"}]}
+      >
+      
+        <Menu.SubMenu title="Participantes">
+          <NamedAvatar name="John Wayne" id='3'/>
+          <NamedAvatar name="John Wayne" id='4'/>
+          <NamedAvatar name="John Wayne" id='5'/>
+          <NamedAvatar name="John Wayne" id='3'/>
+          <NamedAvatar name="John Wayne" id='4'/>
+          <NamedAvatar name="John Wayne" id='5'/>
+          <NamedAvatar name="John Wayne" id='3'/>
+          <NamedAvatar name="John Wayne" id='4'/>
+          <NamedAvatar name="John Wayne" id='5'/>
+          <NamedAvatar name="John Wayne" id='3'/>
+          <NamedAvatar name="John Wayne" id='4'/>
+          <NamedAvatar name="John Wayne" id='5'/>
+          
         </Menu.SubMenu>
-
+       
         <Menu.Item key="3" style={{
           position: 'absolute', 
           bottom: '0',
           overflow: 'hidden'
         }}>
-          <Button type="primary" icon="download" 
+          {/* <Button type="primary" icon="download" 
             style={{
             overflow: 'hidden'
             }}
           >
           Download
-        </Button>
+        </Button> */}
         </Menu.Item>
-
-        
-
-        {/* <Menu.Item key="1">
-          <Icon type="user" />
-          <span className="nav-text">Chat</span>
-        </Menu.Item>
-        
-        <Menu.Item key="3">
-          <Icon type="upload" />
-          <span className="nav-text">nav 3</span>
-        </Menu.Item>
-        <Menu.Item key="4">
-          <Icon type="user" />
-          <span className="nav-text">nav 4</span>
-        </Menu.Item>
-        <Menu.Item key="5"
-          style={{
-            position: 'absolute',
-            bottom: 0,
-          }}
-        >
-          <Icon type="user" />
-          <span className="nav-text">Logout</span>
-        </Menu.Item> */}
         </OptionsList>
-    </Drawer>)
+    </Drawer>
 
-    
-    return (
-      <Layout>
-      <Sider
-      
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={broken => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-        style={{
-          overflowY: 'none',
-          overflowX: 'none',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-        }}
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}
-        style={{
-          overflowY: 'scroll',
-          height: '100%'
-        }}
-        >
-          <Menu.Item key="1">
-            <Icon type="user" />
-            <span className="nav-text">Chat</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="video-camera" />
-            <span className="nav-text">nav 2</span>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Icon type="upload" />
-            <span className="nav-text">nav 3</span>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Icon type="user" />
-            <span className="nav-text">nav 4</span>
-          </Menu.Item>
-          <Menu.Item key="5"
-            style={{
-              position: 'absolute',
-              bottom: 0,
-            }}
-          >
-            <Icon type="user" />
-            <span className="nav-text">Logout</span>
-          </Menu.Item>
-        </Menu>
-      </Sider>
-      <Layout>
-        <Header style={{ background: '#fff', padding: 0 }} />
-        <Content style={{ margin: '24px 16px 0', overflowY: 'scroll' }}>
-          <div style={{ padding: 24, background: '#fff', minHeight: 360, maxHeight: 500 }}>content
+      <Layout style={{display: 'flex', flexDirection: 'column'}}>
+
+        {!this.state.logged ? <MessagesField /> : <Settings />}
         
-          <br />
-          Really
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          long
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          content     </div>   </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <MessageInput />
       </Layout>
     </Layout>
-    );
+
+    )
+    
   }
 }
 

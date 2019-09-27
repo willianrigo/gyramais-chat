@@ -1,0 +1,27 @@
+:hover.selectable-avatar{
+    border: 5px solid red;
+}
+
+@media (max-width: 500px){
+    .selectable-avatar{
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 200px){
+    .selectable-avatar{
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+    }
+}
+
+@media (min-width: 500px){
+    .selectable-avatar{
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+    }
+}

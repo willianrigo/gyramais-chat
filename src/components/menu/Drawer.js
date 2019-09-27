@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './../../stylesheets/_antd.css';
 import { Layout } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 
 const Drawer = ({children}) => {
 
