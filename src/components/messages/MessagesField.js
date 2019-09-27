@@ -5,7 +5,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from "apollo-boost";
 import { ApolloProvider } from '@apollo/react-hooks';
 
-
 const { Content } = Layout;
 
 const MESSAGES = gql`
@@ -51,8 +50,6 @@ return(
         )
       })
     }
-      
-
       </div>
     </Content>
 )

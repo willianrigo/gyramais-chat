@@ -2,12 +2,19 @@ import React from 'react'
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks'
 import { Input, Button, Row, Col, Layout } from 'antd'
+import moment from 'moment';
+
+
 const { TextArea } = Input
 const { Content } = Layout
 
 const ADD_MESSAGE = gql`
-  mutation AddMessage($type: String!) {
-    addMessage(type: $type) {
+  mutation AddMessage(
+      $data: String, $author: String,
+       $timestamp: String
+    ) {
+    addMessage(data: $data, author: $author, 
+      timestamp: $timestamp) {
       data
       author
       timestamp
@@ -24,7 +31,11 @@ const MessageInput = () => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          addMessage({ variables: { type: input.value } });
+          addMessage({ variables: { 
+            data: input.value, 
+            author: 'willian',
+            timestamp: moment().format('YYYY-MM-DD HH:mm:ss')
+          } });
           input.value = '';
         }}
       >
