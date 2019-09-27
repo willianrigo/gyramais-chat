@@ -22,7 +22,7 @@ const MESSAGES = gql`
 const MessagesField = ({children}) => {
 
 const { loading, error, data } = useQuery(MESSAGES,
-  // {pollInterval: 500}
+  {pollInterval: 500}
   );
 
 if(!loading) console.log(data)
@@ -36,8 +36,9 @@ return(
         justifyContent: 'flex-end'
       }}>
       
-      {loading && !data ? null : 
-      
+      {loading || !data ? null : 
+
+
       data.messages.map((message, index) => {
         return(
         <Message
