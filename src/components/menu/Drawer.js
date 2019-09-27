@@ -7,13 +7,13 @@ const Drawer = ({children}) => {
 
     return(
         <Sider
-        breakpoint="md"
-        collapsedWidth="0"
-        style={{
-            height: '100vh',
-        }}
+            breakpoint="md"
+            collapsedWidth="0"
+            style={{
+                height: '100vh',
+            }}
         >
-        {children}
+            {children}
         </Sider>
     )
 }

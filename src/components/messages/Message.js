@@ -2,6 +2,8 @@ import React from 'react'
 import { Comment, Icon, Tooltip, Avatar } from 'antd';
 import moment from 'moment';
 
+
+//Structure of a message
 const Message = ({avatarId}) => {
 
 return( 

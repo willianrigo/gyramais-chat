@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './stylesheets/_antd.css';
 import { Drawer } from './components/menu/Drawer'
-import { OptionsList } from './components/menu/OptionsList'
 import { MessagesField } from './components/messages/MessagesField'
 import { MessageInput } from './components/messages/MessageInput'
-import { NamedAvatar } from './components/users/NamedAvatar'
+import { LabeledAvatar } from './components/users/LabeledAvatar'
 import { Layout, Menu, Icon, Button } from 'antd';
 import { Message } from './components/messages/Message'
 import { Settings } from './components/settings/Settings'
 import { message } from 'antd'
-
+import { SideMenu } from './components/menu/SideMenu'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -31,12 +30,14 @@ class App extends React.Component {
 
   componentDidMount(){
     this.success()
-    setTimeout(this.success(), 4000)
-    setTimeout(this.success(), 8000)
 
   }
 
   render() {
+
+    const users=[{name: 'John Wayne', id: '1'}, {name: 'John Marston', id: '2'}]
+    const options=[{icon: "wechat", name: "Chat"}, {icon: "setting", name: "Configurações"}]
+
     return(
     <Layout
       style={{
@@ -44,45 +45,24 @@ class App extends React.Component {
       }}
     >
       <Drawer>
-      <OptionsList
-        options={[{icon: "wechat", name: "Chat"}, {icon: "setting", name: "Configurações"}]}
-      >
-      
-        <Menu.SubMenu title="Participantes">
-          <NamedAvatar name="John Wayne" id='3'/>
-          <NamedAvatar name="John Wayne" id='4'/>
-          <NamedAvatar name="John Wayne" id='5'/>
-          <NamedAvatar name="John Wayne" id='3'/>
-          <NamedAvatar name="John Wayne" id='4'/>
-          <NamedAvatar name="John Wayne" id='5'/>
-          <NamedAvatar name="John Wayne" id='3'/>
-          <NamedAvatar name="John Wayne" id='4'/>
-          <NamedAvatar name="John Wayne" id='5'/>
-          <NamedAvatar name="John Wayne" id='3'/>
-          <NamedAvatar name="John Wayne" id='4'/>
-          <NamedAvatar name="John Wayne" id='5'/>
-          
-        </Menu.SubMenu>
-       
-        <Menu.Item key="3" style={{
-          position: 'absolute', 
-          bottom: '0',
-          overflow: 'hidden'
-        }}>
-          {/* <Button type="primary" icon="download" 
+        <SideMenu
+          users={users}
+          options={options}
+        />
+        <div style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
+          <Button type="primary" icon="download" 
             style={{
             overflow: 'hidden'
             }}
           >
-          Download
-        </Button> */}
-        </Menu.Item>
-        </OptionsList>
+            Logout
+          </Button>
+        </div>
     </Drawer>
 
       <Layout style={{display: 'flex', flexDirection: 'column'}}>
 
-        {!this.state.logged ? <MessagesField /> : <Settings />}
+        {this.state.logged ? <MessagesField /> : <Settings />}
         
         <MessageInput />
       </Layout>

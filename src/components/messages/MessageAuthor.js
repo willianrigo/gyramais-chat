@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Avatar } from 'antd'
 
+
 const MessageAuthor = ({name, id}) => {
     return(
         <div>
