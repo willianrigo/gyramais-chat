@@ -22,9 +22,14 @@ return(
         </p>
         }
         datetime={
-        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-            <span>{moment().format('YYYY-MM-DD HH:mm:ss')}</span>
+        // <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+        //     <span>{moment().format('YYYY-MM-DD HH:mm:ss')}</span>
+        // </Tooltip>
+        
+        <Tooltip title={timestamp}>
+            <span>{timestamp}</span>
         </Tooltip>
+
         }
     />
     )

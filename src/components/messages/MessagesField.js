@@ -21,7 +21,9 @@ const MESSAGES = gql`
 //Component which will serve as the area to display all the messages sent to the chat, rendering an array of <Message /> component
 const MessagesField = ({children}) => {
 
-const { loading, error, data } = useQuery(MESSAGES);
+const { loading, error, data } = useQuery(MESSAGES,
+  // {pollInterval: 500}
+  );
 
 if(!loading) console.log(data)
 return(
@@ -34,7 +36,7 @@ return(
         justifyContent: 'flex-end'
       }}>
       
-      {loading ? null : 
+      {loading && !data ? null : 
       
       data.messages.map((message, index) => {
         return(
