@@ -1,6 +1,7 @@
 ##Sobre o projeto
 Projeto que simula um chat público online utilizando React.js.
 Os dados são atualizados nos componentes utilizandos queries do GraphQL com React Hooks.
+Foram utilizados alguns componentes prontos da biblioteca AntDesign.
 
 ## Setup
 
