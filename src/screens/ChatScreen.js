@@ -19,14 +19,12 @@ return(
             <SideMenu
             users={props.users}
             />
-            
         </Drawer>
 
-        <Layout style={{display: 'flex', flexDirection: 'column'}}>
-
-            <MessagesField />
-            <MessageInput />
-        </Layout>
+            <Layout style={{display: 'flex', flexDirection: 'column'}}>
+                <MessagesField />
+                <MessageInput />
+            </Layout>
         </Layout>
     )
 

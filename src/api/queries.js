@@ -40,7 +40,7 @@ const MESSAGES = gql`
 
 const USERS = gql`
   {
-    messages{
+    users{
       name
       token
       avatarId

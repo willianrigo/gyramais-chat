@@ -4,12 +4,13 @@ import { LabeledAvatar } from './../users/LabeledAvatar'
 import { useQuery } from '@apollo/react-hooks';
 import { USERS } from './../../api/queries'
 
-const SideMenu = ({options, users}) => {
+const SideMenu = () => {
 
     const { loading, error, data } = useQuery(USERS,
-        {pollInterval: 3000}
+        {pollInterval: 1000}
     );
 
+    console.log(error, data, loading)
 
     /* Menu subcomponents cannot be wrapped --> https://github.com/ant-design/ant-design/issues/4853 */
 
@@ -20,14 +21,18 @@ const SideMenu = ({options, users}) => {
             height: '100%'
         }}
     >
+
+    {loading || !data ? 
+    null :
     <Menu.SubMenu title="Últimos usuários">
-        {users.map((user, index) => {
+        {data.users.reverse().map((user, index) => {
             return(
                 <LabeledAvatar name={user.name} id={user.avatarId} key={index}/>
             )
         })}
   
         </Menu.SubMenu>
+    }
     </Menu>
 )}
 
