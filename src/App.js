@@ -6,10 +6,9 @@ import { MessageInput } from './components/messages/MessageInput'
 import { LabeledAvatar } from './components/users/LabeledAvatar'
 import { Layout, Menu, Icon, Button } from 'antd';
 import { Message } from './components/messages/Message'
-import { Settings } from './components/settings/Settings'
 import { message } from 'antd'
 import { SideMenu } from './components/menu/SideMenu'
-
+import { MainScreen } from './screens/MainScreen'
 
 import ApolloClient from 'apollo-boost';
 import { gql } from "apollo-boost";
@@ -47,8 +46,12 @@ class App extends React.Component {
 
     
     const users=[{name: 'John Wayne', id: '1'}, {name: 'John Marston', id: '2'}]
-    const options=[{icon: "wechat", name: "Chat"}, {icon: "setting", name: "Configurações"}]
 
+    if(!this.state.logged){
+      return(
+        <MainScreen />
+      )
+    }
 
     return(
       <ApolloProvider client={client} >
@@ -60,7 +63,6 @@ class App extends React.Component {
       <Drawer>
         <SideMenu
           users={users}
-          options={options}
         />
         <div style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
           <Button type="primary" icon="download" 
@@ -75,8 +77,7 @@ class App extends React.Component {
 
       <Layout style={{display: 'flex', flexDirection: 'column'}}>
 
-        {!this.state.logged ? <MessagesField /> : <Settings />}
-        
+        <MessagesField />
         <MessageInput />
       </Layout>
     </Layout>
