@@ -23,7 +23,7 @@ return(
 
             <Layout style={{display: 'flex', flexDirection: 'column'}}>
                 <MessagesField />
-                <MessageInput />
+                <MessageInput username={props.username} />
             </Layout>
         </Layout>
     )

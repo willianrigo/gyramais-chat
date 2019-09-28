@@ -27,9 +27,11 @@ const MainScreen = (props) => {
         setUserLogged(true)
     }
 
+    console.log('username: ', username)
+
     if(userLogged){
         return(
-            <ChatScreen />
+            <ChatScreen username={username}/>
         )
     }
 

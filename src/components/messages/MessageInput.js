@@ -1,16 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useMutation } from '@apollo/react-hooks'
-import { Input, Button, Row, Col, Layout } from 'antd'
 import moment from 'moment';
 import { ADD_MESSAGE } from './../../api/queries'
 
-const { TextArea } = Input
-const { Content } = Layout
+const MessageInput = (props) => {
 
-const MessageInput = () => {
   let input;
   const [addMessage, { data }] = useMutation(ADD_MESSAGE)
-
+  
       return (
         <div>
       <form
@@ -18,7 +15,7 @@ const MessageInput = () => {
           e.preventDefault();
           addMessage({ variables: { 
             data: input.value, 
-            author: 'willian',
+            author: props.username,
             timestamp: moment().format('YYYY-MM-DD HH:mm:ss')
           } });
           input.value = '';

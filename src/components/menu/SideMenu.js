@@ -10,8 +10,6 @@ const SideMenu = () => {
         {pollInterval: 1000}
     );
 
-    console.log(error, data, loading)
-
     /* Menu subcomponents cannot be wrapped --> https://github.com/ant-design/ant-design/issues/4853 */
 
     return(
