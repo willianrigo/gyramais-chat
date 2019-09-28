@@ -15,6 +15,8 @@ const { loading, error, data } = useQuery(MESSAGES,
   {pollInterval: 500}
   );
 
+  console.log("DATA: ", data)
+
 if(!loading) console.log(data)
 return(
     <Content style={{  overflowY: 'scroll'}}>
@@ -32,10 +34,11 @@ return(
       data.messages.map((message, index) => {
         return(
         <Message
-           avatarId={message.avatarId}
+          avatarId={message.avatarId}
           data={message.data}
           author={message.author}
           timestamp={message.timestamp}
+          avatarId={message.avatarId}
           key={index}
         /> 
         )

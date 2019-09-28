@@ -17,13 +17,14 @@ const ADD_USER = gql`
 const ADD_MESSAGE = gql`
   mutation AddMessage(
       $data: String, $author: String,
-       $timestamp: String
+       $timestamp: String, $avatarId: Int
     ) {
     addMessage(data: $data, author: $author, 
-      timestamp: $timestamp) {
+      timestamp: $timestamp, avatarId: $avatarId) {
       data
       author
       timestamp
+      avatarId
     }
   }
 `;
@@ -34,6 +35,7 @@ const MESSAGES = gql`
       data
       author
       timestamp
+      avatarId
     }
   }
 `

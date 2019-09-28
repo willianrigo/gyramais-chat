@@ -31,7 +31,7 @@ const MainScreen = (props) => {
 
     if(userLogged){
         return(
-            <ChatScreen username={username}/>
+            <ChatScreen username={username} avatarId={avatarId}/>
         )
     }
 

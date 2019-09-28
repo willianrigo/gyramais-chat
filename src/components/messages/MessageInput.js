@@ -9,24 +9,26 @@ const MessageInput = (props) => {
   const [addMessage, { data }] = useMutation(ADD_MESSAGE)
   
       return (
-        <div>
-      <form
+        <div >
+      <form style={{width: '100%'}}
         onSubmit={e => {
           e.preventDefault();
           addMessage({ variables: { 
             data: input.value, 
             author: props.username,
-            timestamp: moment().format('YYYY-MM-DD HH:mm:ss')
+            timestamp: moment().format('YYYY-MM-DD HH:mm:ss'),
+            avatarId: props.avatarId
           } });
           input.value = '';
         }}
       >
-        <input
+        <input style={{width: '80%'}}
           ref={node => {
             input = node;
           }}
         />
-        <button type="submit">Enviar</button>
+        <button style={{width: '20%'}}
+         type="submit">Enviar</button>
       </form>
     </div>
       );
