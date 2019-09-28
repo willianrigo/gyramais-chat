@@ -4,14 +4,17 @@ import { useMutation } from '@apollo/react-hooks'
 import './../stylesheets/_avatar.css';
 import './../api/queries'
 import { ADD_USER } from './../api/queries'
+import { ChatScreen } from './ChatScreen'
 
 const { Content } = Layout;
 
 const MainScreen = (props) => {
 
     const [avatarId, setAvatarId] = useState(0)
-    const [username, setUsername] = useState('')
-    const [addUser, { data }] = useMutation(ADD_USER)
+    const [username, setUsername] = useState(false)
+    const [userLogged, setUserLogged] = useState('')
+
+    const [addUser] = useMutation(ADD_USER)
 
     const handleAddUser = () => {
         addUser({ 
@@ -20,6 +23,14 @@ const MainScreen = (props) => {
             token: '123123',
             avatarId: avatarId
           } });
+
+        setUserLogged(true)
+    }
+
+    if(userLogged){
+        return(
+            <ChatScreen />
+        )
     }
 
     return(

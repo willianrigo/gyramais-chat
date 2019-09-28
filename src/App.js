@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './stylesheets/_antd.css';
-import { Drawer } from './components/menu/Drawer'
-import { MessagesField } from './components/messages/MessagesField'
-import { MessageInput } from './components/messages/MessageInput'
-import { LabeledAvatar } from './components/users/LabeledAvatar'
-import { Layout, Menu, Icon, Button } from 'antd';
-import { Message } from './components/messages/Message'
+import { Layout } from 'antd';
 import { message } from 'antd'
-import { SideMenu } from './components/menu/SideMenu'
 import { MainScreen } from './screens/MainScreen'
 
 import ApolloClient from 'apollo-boost';
@@ -44,9 +38,6 @@ class App extends React.Component {
 
   render() {
 
-    
-    const users=[{name: 'John Wayne', id: '1'}, {name: 'John Marston', id: '2'}]
-
     if(!this.state.logged){
       return(
       <ApolloProvider client={client} >
@@ -59,32 +50,7 @@ class App extends React.Component {
 
     return(
       <ApolloProvider client={client} >
-    <Layout
-      style={{
-        height: '100vh'
-      }}
-    >
-      <Drawer>
-        <SideMenu
-          users={users}
-        />
-        <div style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
-          <Button type="primary" icon="download" 
-            style={{
-            overflow: 'hidden'
-            }}
-          >
-            Logout
-          </Button>
-        </div>
-    </Drawer>
-
-      <Layout style={{display: 'flex', flexDirection: 'column'}}>
-
-        <MessagesField />
-        <MessageInput />
-      </Layout>
-    </Layout>
+    
 </ApolloProvider>
     )
     
