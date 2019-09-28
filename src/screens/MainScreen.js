@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Layout, Form, Button, Icon, Input, Avatar } from 'antd';
 import './../stylesheets/_avatar.css';
+import './../api/queries'
 
 const { Content } = Layout;
 

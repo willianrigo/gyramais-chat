@@ -1,5 +1,9 @@
 :hover.selectable-avatar{
-    border: 5px solid red;
+    border: 5px solid blue;
+}
+
+.selected{
+    border: 5px solid green;
 }
 
 @media (max-width: 500px){

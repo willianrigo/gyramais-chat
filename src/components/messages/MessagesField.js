@@ -4,18 +4,9 @@ import { Message } from './Message'
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from "apollo-boost";
 import { ApolloProvider } from '@apollo/react-hooks';
+import { MESSAGES } from './../../api/queries'
 
 const { Content } = Layout;
-
-const MESSAGES = gql`
-  {
-    messages{
-      data
-      author
-      timestamp
-    }
-  }
-`
 
 //Component which will serve as the area to display all the messages sent to the chat, rendering an array of <Message /> component
 const MessagesField = ({children}) => {
