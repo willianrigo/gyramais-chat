@@ -22,7 +22,7 @@ const MessageInput = (props) => {
           input.value = '';
         }}
       >
-        <input style={{width: '80%'}}
+        <input placeholder="Digite sua mensagem" style={{width: '80%'}}
           ref={node => {
             input = node;
           }}
