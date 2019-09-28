@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import { Layout, Form, Button, Icon, Input, Avatar } from 'antd';
+import { useMutation } from '@apollo/react-hooks'
 import './../stylesheets/_avatar.css';
 import './../api/queries'
+import { ADD_USER } from './../api/queries'
 
 const { Content } = Layout;
 
@@ -9,6 +11,16 @@ const MainScreen = (props) => {
 
     const [avatarId, setAvatarId] = useState(0)
     const [username, setUsername] = useState('')
+    const [addUser, { data }] = useMutation(ADD_USER)
+
+    const handleAddUser = () => {
+        addUser({ 
+        variables: { 
+            name: username, 
+            token: '123123',
+            avatarId: avatarId
+          } });
+    }
 
     return(
         <Content style={{overflow: 'hidden'}}>
@@ -46,7 +58,7 @@ const MainScreen = (props) => {
                     />
                 </Form.Item>
                 <Form.Item>
-                <Button onClick={() => {}} type="primary" htmlType="submit" className="login-form-button">
+                <Button onClick={() => {handleAddUser()}} type="primary" htmlType="submit" className="login-form-button">
                     Participar do chat
                 </Button>
                 </Form.Item>

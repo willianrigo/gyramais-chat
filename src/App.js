@@ -49,7 +49,11 @@ class App extends React.Component {
 
     if(!this.state.logged){
       return(
+      <ApolloProvider client={client} >
+
         <MainScreen />
+
+        </ApolloProvider>
       )
     }
 

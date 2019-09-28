@@ -38,4 +38,14 @@ const MESSAGES = gql`
   }
 `
 
-export { ADD_USER, ADD_MESSAGE, MESSAGES}
+const USERS = gql`
+  {
+    messages{
+      name
+      token
+      avatarId
+    }
+  }
+`
+
+export { ADD_USER, ADD_MESSAGE, MESSAGES, USERS}
